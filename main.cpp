@@ -91,12 +91,9 @@ int main(int argc, char const *argv[])
 				cout<<lista.size()<<endl;
 				for (int i = 0; i < lista.size(); i++)
 				{
-					cout << "direccion lista[i]: " << lista[i] << endl;
 					contactos* temp = (lista[i]);
-					cout << "direccion temp: " << temp << endl;
 					if (dynamic_cast<amigos*>(lista[i])!=NULL){
 						amigos* ami=dynamic_cast<amigos*>(temp);
-						cout<<"Entro";
 						cout<<ami->toString()<<endl;
 					}
 					if (dynamic_cast<familiares*>(temp)!=NULL){
@@ -116,6 +113,7 @@ int main(int argc, char const *argv[])
 			}
 		}
 	}
+	Escribir(lista);
 	return 0;
 }
 
@@ -134,7 +132,7 @@ void Cargar(vector<contactos*> lista)
 	{
 		while(!fileA.eof())
 		{
-			amigos* amigo = new amigos();
+			amigos* amigo;
 			fileA.read(reinterpret_cast<char*>(&amigo), sizeof(amigo));
 			lista.push_back(amigo);
 		}
@@ -153,7 +151,7 @@ void Cargar(vector<contactos*> lista)
 	{
 		while(!fileF.eof())
 		{
-			familiares* familiar = new familiares();
+			familiares* familiar;
 			fileF.read(reinterpret_cast<char*>(&familiar), sizeof(familiar));
 			lista.push_back(familiar);
 		}
@@ -172,7 +170,7 @@ void Cargar(vector<contactos*> lista)
 	{
 		while(!fileC.eof())
 		{
-			companeros* companero= new companeros();
+			companeros* companero;
 			fileC.read(reinterpret_cast<char*>(&companero), sizeof(companero));
 			lista.push_back(companero);
 		}
@@ -191,14 +189,14 @@ void Cargar(vector<contactos*> lista)
 	{
 		while(!fileCas.eof())
 		{
-			castigos* castigo = new castigos();
+			castigos* castigo;
 			fileCas.read(reinterpret_cast<char*>(&castigo), sizeof(castigo));
 			lista.push_back(castigo);
 		}
 	}
 }
 
-void Escribir(vector<contactos> lista)
+void Escribir(vector<contactos*> lista)
 {
 	const char* file_nameA = "./Amigos.maluma";
 
@@ -209,9 +207,9 @@ void Escribir(vector<contactos> lista)
 	for (int i = 0; i < lista.size(); ++i)
 	{
 
-		if ((dynamic_cast<amigos*>(&lista.at(i))) != NULL)
+		if ((dynamic_cast<amigos*>(lista.at(i))) != NULL)
 		{
-			amigo = dynamic_cast<amigos*>(&lista.at(i));
+			amigo = dynamic_cast<amigos*>(lista.at(i));
 
 			fileA.write((char*)&amigo, sizeof(amigo));
 		}
@@ -227,9 +225,9 @@ void Escribir(vector<contactos> lista)
 	for (int i = 0; i < lista.size(); ++i)
 	{
 		
-		if ((dynamic_cast<familiares*>(&lista.at(i))) != NULL)
+		if ((dynamic_cast<familiares*>(lista.at(i))) != NULL)
 		{
-			familiar = dynamic_cast<familiares*>(&lista.at(i));
+			familiar = dynamic_cast<familiares*>(lista.at(i));
 
 			fileF.write((char*)&familiar, sizeof(familiar));
 		}
@@ -246,9 +244,9 @@ void Escribir(vector<contactos> lista)
 	for (int i = 0; i < lista.size(); ++i)
 	{
 
-		if ((dynamic_cast<companeros*>(&lista.at(i))) != NULL)
+		if ((dynamic_cast<companeros*>(lista.at(i))) != NULL)
 		{
-			companero = dynamic_cast<companeros*>(&lista.at(i));
+			companero = dynamic_cast<companeros*>(lista.at(i));
 
 			fileC.write((char*)&companero, sizeof(companero));
 		}
@@ -264,12 +262,13 @@ void Escribir(vector<contactos> lista)
 
 	for (int i = 0; i < lista.size(); ++i)
 	{
-		if ((dynamic_cast<castigos*>(&lista.at(i))) != NULL)
+		if ((dynamic_cast<castigos*>(lista.at(i))) != NULL)
 		{
-			castigo = dynamic_cast<castigos*>(&lista.at(i));
+			castigo = dynamic_cast<castigos*>(lista.at(i));
 
 			fileC.write((char*)&castigo, sizeof(castigo));
 		}
 		
 		
 	}
+}
