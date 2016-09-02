@@ -17,6 +17,6 @@ amigos::~amigos(){
 
 string amigos::toString(){
 	stringstream ss;
-	ss <<contactos::toString()<< "Años Juntos: " << tiempo_ami << ", Username: " username_ami,"";
+	ss <<contactos::toString()<< "Años Juntos: " << tiempo_ami << ", Username: "<<username_ami;
 	return ss.str();
 }
