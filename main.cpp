@@ -7,9 +7,11 @@ using std::vector;
 #include "castigos.h"
 #include "amigos.h"
 #include <iostream>
+#include <fstream>
+
 using namespace std;
 
-
+void Cargar(vector<contactos>);
 
 
 int main(int argc, char const *argv[])
@@ -92,43 +94,78 @@ int main(int argc, char const *argv[])
 void Cargar(vector<contactos> lista)
 {
 	const char* file_nameA = "./Amigos.maluma";
-	string name(file_nameA);
 
-	ifstream file(file_nameA, ios::in|ios::binary);
+	ifstream fileA(file_nameA, ios::in|ios::binary);
 
-	if (file.fail())
+	if (fileA.fail())
 	{
-		file.close;
+		fileA.close();
 
 	}
-	if (file.good())
+	if (fileA.good())
 	{
-		while(!file.eof())
+		while(!fileA.eof())
 		{
-			amigos amigo:
-			file.read(reinterpreter_cast<char*>(&amigo), sizeof(amigo));
+			amigos amigo;
+			fileA.read(reinterpret_cast<char*>(&amigo), sizeof(amigo));
 			lista.push_back(amigo);
 		}
 	}
 
 	const char* file_nameF = "./Familiares.maluma";
-	string name(file_nameF);
 
-	ifstream file(file_nameF, ios::in|ios::binary);
+	ifstream fileF(file_nameF, ios::in|ios::binary);
 
-	if (file.fail())
+	if (fileF.fail())
 	{
-		file.close;
+		fileF.close();
 		
 	}
-	if (file.good())
+	if (fileF.good())
 	{
-		while(!file.eof())
+		while(!fileF.eof())
 		{
-			Familiares Familiares:
-			file.read(reinterpreter_cast<char*>(&familiar), sizeof(familiar));
+			familiares familiar;
+			fileF.read(reinterpret_cast<char*>(&familiar), sizeof(familiar));
 			lista.push_back(familiar);
 		}
 	}
 
+	const char* file_nameC = "./Compañero.maluma";
+
+	ifstream fileC(file_nameC, ios::in|ios::binary);
+
+	if (fileC.fail())
+	{
+		fileC.close();
+		
+	}
+	if (fileC.good())
+	{
+		while(!fileC.eof())
+		{
+			companeros companero;
+			fileC.read(reinterpret_cast<char*>(&companero), sizeof(companero));
+			lista.push_back(companero);
+		}
+	}
+
+	const char* file_nameCas = "./Castigo.maluma";
+
+	ifstream fileCas(file_nameCas, ios::in|ios::binary);
+
+	if (fileCas.fail())
+	{
+		fileCas.close();
+		
+	}
+	if (fileCas.good())
+	{
+		while(!fileCas.eof())
+		{
+			castigos castigo;
+			fileCas.read(reinterpret_cast<char*>(&castigo), sizeof(castigo));
+			lista.push_back(castigo);
+		}
+	}
 }
