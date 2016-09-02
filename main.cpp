@@ -1,10 +1,12 @@
 # include <iostream>
+#include <vector>
 using std::vector;
 #include "contactos.h"
+#include "familiares.h"
+#include "companeros.h"
+#include "castigos.h"
+#include "amigos.h"
 #include <iostream>
-# include <vector>
-#include <fstring>
-using std::vector;
 using namespace std;
 
 
@@ -42,10 +44,45 @@ int main(int argc, char const *argv[])
 					}
 					case 2:{
 						string consanguinidad,parentesco;
-						cout<<"Grado de consanguinidad: "
+						cout<<"Grado de consanguinidad: ";
+						cin>>consanguinidad;
+						cout<<"Grado de parentesco: ";
+						cin>>parentesco;
+						lista.push_back(familiares(nombre,numero,consanguinidad,parentesco));
+						break;
+					}
+					case 3:{
+						string clase,grupo;
+						cout<<"Clase que llevaron juntos: ";
+						cin>>clase;
+						cout<<"Trabajaria en grupo con esta persona: ";
+						cin>>grupo;
+						lista.push_back(companeros(nombre,numero,clase,grupo));
+						break;
+					}
+					case 4:{
+						int puntos;
+						string tecnica;
+						cout<<"Puntucacion: ";
+						cin>>puntos;
+						cout<<"Tecnica utilizada: ";
+						cin>>tecnica;
+						lista.push_back(castigos(nombre,numero,puntos,tecnica));
+						break;
 					}
 				}
+				cout<<"*******"<<endl<<"Agregado"<<endl<<"*******"<<endl;
+
+
 				break;
+			}
+			case 2:{
+				cout<<"------Listar------"<<endl;
+				for (int i = 0; i < lista.size(); i++)
+				{
+					
+				}
+				
 			}
 		}
 	}
