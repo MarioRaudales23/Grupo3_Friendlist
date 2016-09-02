@@ -170,3 +170,14 @@ void Cargar(vector<contactos> lista)
 		}
 	}
 }
+
+void Escribir(vector<contactos> lista)
+{
+	const char* file_nameA = "./Amigos.maluma";
+
+	const char* file_nameF = "./Familiares.maluma";
+
+	const char* file_nameC = "./Compañero.maluma";
+
+	const char* file_nameCas = "./Castigo.maluma";
+}
