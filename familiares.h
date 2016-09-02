@@ -8,6 +8,7 @@ class familiares:public contactos{
 		string consanguinidad_fam;
 		string parentesco_fam;
 	public:
+		familiares();
 		familiares(string,string,string,string);
 		virtual ~familiares();
 		virtual string toString()const;

@@ -6,7 +6,9 @@ using std::string;
 using std::stringstream;
 
 using namespace std;
-
+castigos::castigos():contactos(){
+	
+}
 castigos::castigos(string nombre,string celular,int tiempo,string username):contactos(nombre,celular),puntacion_cas(tiempo),tipo_cas(username){
 
 }

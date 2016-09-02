@@ -8,6 +8,7 @@ class companeros:public contactos{
 		string clase_compa;
 		string trabaja_compa;
 	public:
+		companeros();
 		companeros(string,string,string,string);
 		virtual ~companeros();
 		virtual string toString()const;

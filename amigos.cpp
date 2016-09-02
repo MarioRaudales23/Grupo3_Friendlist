@@ -6,7 +6,9 @@ using std::string;
 using std::stringstream;
 
 using namespace std;
-
+amigos::amigos():contactos(){
+	
+}
 amigos::amigos(string nombre,string celular,int tiempo,string username):contactos(nombre,celular),tiempo_ami(tiempo),username_ami(username){
 
 }

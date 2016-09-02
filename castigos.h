@@ -8,6 +8,7 @@ class castigos:public contactos{
 		int puntacion_cas;
 		string tipo_cas;
 	public:
+		castigos();
 		castigos(string,string,int,string);
 		virtual ~castigos();
 		virtual string toString()const;

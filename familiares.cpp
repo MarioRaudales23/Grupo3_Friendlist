@@ -6,7 +6,9 @@ using std::string;
 using std::stringstream;
 
 using namespace std;
+familiares::familiares():contactos(){
 
+}
 familiares::familiares(string nombre,string celular,string consan,string parentes):contactos(nombre,celular),consanguinidad_fam(consan),parentesco_fam(parentes){
 
 }

@@ -6,7 +6,9 @@ using std::string;
 using std::stringstream;
 
 using namespace std;
-
+companeros::companeros():contactos(){
+	
+}
 companeros::companeros(string nombre,string celular,string clase,string trabaja):contactos(nombre,celular),clase_compa(clase),trabaja_compa(clase){
 
 }

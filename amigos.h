@@ -8,6 +8,7 @@ class amigos:public contactos{
 		int tiempo_ami;
 		string username_ami;
 	public:
+		amigos();
 		amigos(string,string,int,string);
 		virtual ~amigos();
 		virtual string toString()const;

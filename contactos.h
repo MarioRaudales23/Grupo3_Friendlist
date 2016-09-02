@@ -8,6 +8,7 @@ class contactos{
 		string nombre_con;
 		string celular_con;
 	public:
+		contactos();
 		contactos(string,string);
 		virtual ~contactos();
 		virtual string toString()const;
