@@ -5,6 +5,9 @@ using std::string;
 using std::stringstream;
 
 using namespace std;
+contactos::contactos(){
+	
+}
 
 contactos::contactos(string nombre,string celular):nombre_con(nombre),celular_con(celular){
 
