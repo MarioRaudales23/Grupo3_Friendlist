@@ -1,5 +1,5 @@
 #include "contactos.h"
-#include "amigos.h"
+#include "castigos.h"
 #include <string>
 #include <sstream>
 using std::string;
@@ -15,7 +15,7 @@ castigos::~castigos(){
 
 }
 
-string castigos::toString(){
+string castigos::toString()const{
 	stringstream ss;
 	ss <<contactos::toString()<< "Puntacion: " << puntacion_cas << ", Tipo Castigo: "<<tipo_cas;
 	return ss.str();

@@ -7,7 +7,7 @@ using std::stringstream;
 
 using namespace std;
 
-familiares::familiares(string nombre,string celular,string san,string parentes):contactos(nombre,celular),consanguinidad_fam(tiempo),parentesco_fam(parentes){
+familiares::familiares(string nombre,string celular,string consan,string parentes):contactos(nombre,celular),consanguinidad_fam(consan),parentesco_fam(parentes){
 
 }
 
@@ -15,7 +15,7 @@ familiares::~familiares(){
 
 }
 
-string familiares::toString(){
+string familiares::toString()const{
 	stringstream ss;
 	ss <<contactos::toString()<< "Consanguinidad: " << consanguinidad_fam << ", Parentesco: " << parentesco_fam;
 	return ss.str();

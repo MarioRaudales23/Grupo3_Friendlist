@@ -7,7 +7,7 @@ using std::stringstream;
 
 using namespace std;
 
-companeros::companeros(string nombre,string celular,string clase,string trabaja):contactos(nombre,celular),clase_compa(tiempo),trabaja_compa(trabaja){
+companeros::companeros(string nombre,string celular,string clase,string trabaja):contactos(nombre,celular),clase_compa(clase),trabaja_compa(clase){
 
 }
 
@@ -15,7 +15,7 @@ companeros::~companeros(){
 
 }
 
-string companeros::toString(){
+string companeros::toString()const{
 	stringstream ss;
 	ss <<contactos::toString()<< "Clases Juntos: " << clase_compa << ", Trabajan Juntos: "<<trabaja_compa;
 	return ss.str();

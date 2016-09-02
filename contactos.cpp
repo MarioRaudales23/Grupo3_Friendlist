@@ -14,8 +14,8 @@ contactos::~contactos(){
 
 }
 
-string contactos::toString(){
+string contactos::toString()const{
 	stringstream ss;
-	ss << "Contactos: Nombre: " << nombre_con << ", Celular: " celular_con;
+	ss << "Contactos: Nombre: " << nombre_con << ", Celular: " <<celular_con;
 	return ss.str();
 }
