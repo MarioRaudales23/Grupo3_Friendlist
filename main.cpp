@@ -1,9 +1,13 @@
 # include <iostream>
+#include <vector>
 using std::vector;
 #include "contactos.h"
+#include "familiares.h"
+#include "companeros.h"
+#include "castigos.h"
+#include "amigos.h"
 #include <iostream>
-# include <vector>
-using std::vector;
+
 using namespace std;
 
 int main(int argc, char const *argv[])
@@ -66,9 +70,17 @@ int main(int argc, char const *argv[])
 					}
 				}
 				cout<<"*******"<<endl<<"Agregado"<<endl<<"*******"<<endl;
-				
+
 
 				break;
+			}
+			case 2:{
+				cout<<"------Listar------"<<endl;
+				for (int i = 0; i < lista.size(); i++)
+				{
+					
+				}
+				
 			}
 		}
 	}
