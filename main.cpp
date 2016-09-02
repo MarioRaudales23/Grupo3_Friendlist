@@ -13,7 +13,7 @@ using namespace std;
 
 void Cargar(vector<contactos*>);
 
-void Escribir(vector<contactos>);
+void Escribir(vector<contactos*>);
 
 
 int main(int argc, char const *argv[])
@@ -134,7 +134,7 @@ void Cargar(vector<contactos*> lista)
 	{
 		while(!fileA.eof())
 		{
-			amigos amigo;
+			amigos* amigo = new amigos();
 			fileA.read(reinterpret_cast<char*>(&amigo), sizeof(amigo));
 			lista.push_back(amigo);
 		}
@@ -153,7 +153,7 @@ void Cargar(vector<contactos*> lista)
 	{
 		while(!fileF.eof())
 		{
-			familiares familiar;
+			familiares* familiar = new familiares();
 			fileF.read(reinterpret_cast<char*>(&familiar), sizeof(familiar));
 			lista.push_back(familiar);
 		}
@@ -172,7 +172,7 @@ void Cargar(vector<contactos*> lista)
 	{
 		while(!fileC.eof())
 		{
-			companeros companero;
+			companeros* companero= new companeros();
 			fileC.read(reinterpret_cast<char*>(&companero), sizeof(companero));
 			lista.push_back(companero);
 		}
@@ -191,14 +191,14 @@ void Cargar(vector<contactos*> lista)
 	{
 		while(!fileCas.eof())
 		{
-			castigos castigo;
+			castigos* castigo = new castigos();
 			fileCas.read(reinterpret_cast<char*>(&castigo), sizeof(castigo));
 			lista.push_back(castigo);
 		}
 	}
 }
 
-void Escribir(vector<contactos> lista)
+void Escribir(vector<contactos*> lista)
 {
 	const char* file_nameA = "./Amigos.maluma";
 
