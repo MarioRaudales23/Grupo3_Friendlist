@@ -13,6 +13,8 @@ using namespace std;
 
 void Cargar(vector<contactos*>);
 
+void Escribir(vector<contactos>);
+
 
 int main(int argc, char const *argv[])
 {
@@ -193,5 +195,56 @@ void Cargar(vector<contactos*> lista)
 			fileCas.read(reinterpret_cast<char*>(&castigo), sizeof(castigo));
 			lista.push_back(castigo);
 		}
+	}
+}
+
+void Escribir(vector<contactos> lista)
+{
+	const char* file_nameA = "./Amigos.maluma";
+
+	ofstream fileA(file_nameA, ios::out|ios::binary);
+
+	amigos amigo;
+
+	for (int i = 0; i < lista.size(); ++i)
+	{
+
+		fileA.write((char*)&amigo, sizeof(amigo));
+	}
+
+	const char* file_nameF = "./Familiares.maluma";
+
+	ofstream fileF(file_nameF, ios::out|ios::binary);
+
+	familiares familiar;
+
+	for (int i = 0; i < lista.size(); ++i)
+	{
+		
+		fileF.write((char*)&familiar, sizeof(familiar));
+	}
+
+	const char* file_nameC = "./Compañero.maluma";
+
+	ofstream fileC(file_nameC, ios::out|ios::binary);
+
+	companeros companero;
+
+	for (int i = 0; i < lista.size(); ++i)
+	{
+		
+		fileC.write((char*)&amigo, sizeof(amigo));
+	}
+
+	const char* file_nameCas = "./Castigo.maluma";
+
+	ofstream fileCas(file_nameA, ios::out|ios::binary);
+
+	castigos castigo;
+
+	for (int i = 0; i < lista.size(); ++i)
+	{
+		
+		fileCas.write((char*)&amigo, sizeof(amigo));
 	}
 }
