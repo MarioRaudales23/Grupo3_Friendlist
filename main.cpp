@@ -3,8 +3,12 @@ using std::vector;
 #include "contactos.h"
 #include <iostream>
 # include <vector>
+#include <fstring>
 using std::vector;
 using namespace std;
+
+
+
 
 int main(int argc, char const *argv[])
 {
@@ -46,4 +50,48 @@ int main(int argc, char const *argv[])
 		}
 	}
 	return 0;
+}
+
+void Cargar(vector<contactos> lista)
+{
+	const char* file_nameA = "./Amigos.maluma";
+	string name(file_nameA);
+
+	ifstream file(file_nameA, ios::in|ios::binary);
+
+	if (file.fail())
+	{
+		file.close;
+
+	}
+	if (file.good())
+	{
+		while(!file.eof())
+		{
+			amigos amigo:
+			file.read(reinterpreter_cast<char*>(&amigo), sizeof(amigo));
+			lista.push_back(amigo);
+		}
+	}
+
+	const char* file_nameF = "./Familiares.maluma";
+	string name(file_nameF);
+
+	ifstream file(file_nameF, ios::in|ios::binary);
+
+	if (file.fail())
+	{
+		file.close;
+		
+	}
+	if (file.good())
+	{
+		while(!file.eof())
+		{
+			Familiares Familiares:
+			file.read(reinterpreter_cast<char*>(&familiar), sizeof(familiar));
+			lista.push_back(familiar);
+		}
+	}
+
 }
