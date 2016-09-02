@@ -17,6 +17,7 @@ void Cargar(vector<contactos>);
 int main(int argc, char const *argv[])
 {
 	vector<contactos> lista;
+	Cargar(lista);
 	int op=0;
 	while(op!=3){
 		cout<<"------FirendList------"<<endl;
