@@ -256,7 +256,7 @@ void Escribir(vector<contactos*> lista)
 
 	const char* file_nameCas = "./Castigo.maluma";
 
-	ofstream fileCas(file_nameA, ios::out|ios::binary);
+	ofstream fileCas(file_nameCas, ios::out|ios::binary);
 
 	castigos* castigo;
 
@@ -266,7 +266,7 @@ void Escribir(vector<contactos*> lista)
 		{
 			castigo = dynamic_cast<castigos*>(lista.at(i));
 
-			fileC.write((char*)&castigo, sizeof(castigo));
+			fileCas.write((char*)&castigo, sizeof(castigo));
 		}
 		
 		
