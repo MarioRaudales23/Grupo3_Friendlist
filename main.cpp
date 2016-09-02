@@ -198,53 +198,78 @@ void Cargar(vector<contactos*> lista)
 	}
 }
 
-void Escribir(vector<contactos*> lista)
+void Escribir(vector<contactos> lista)
 {
 	const char* file_nameA = "./Amigos.maluma";
 
 	ofstream fileA(file_nameA, ios::out|ios::binary);
 
-	amigos amigo;
+	amigos* amigo;
 
 	for (int i = 0; i < lista.size(); ++i)
 	{
 
-		fileA.write((char*)&amigo, sizeof(amigo));
+		if ((dynamic_cast<amigos*>(&lista.at(i))) != NULL)
+		{
+			amigo = dynamic_cast<amigos*>(&lista.at(i));
+
+			fileA.write((char*)&amigo, sizeof(amigo));
+		}
+		
 	}
 
 	const char* file_nameF = "./Familiares.maluma";
 
 	ofstream fileF(file_nameF, ios::out|ios::binary);
 
-	familiares familiar;
+	familiares* familiar;
 
 	for (int i = 0; i < lista.size(); ++i)
 	{
 		
-		fileF.write((char*)&familiar, sizeof(familiar));
+		if ((dynamic_cast<familiares*>(&lista.at(i))) != NULL)
+		{
+			familiar = dynamic_cast<familiares*>(&lista.at(i));
+
+			fileF.write((char*)&familiar, sizeof(familiar));
+		}
+
+		
 	}
 
 	const char* file_nameC = "./Compañero.maluma";
 
 	ofstream fileC(file_nameC, ios::out|ios::binary);
 
-	companeros companero;
+	companeros* companero;
 
 	for (int i = 0; i < lista.size(); ++i)
 	{
+
+		if ((dynamic_cast<companeros*>(&lista.at(i))) != NULL)
+		{
+			companero = dynamic_cast<companeros*>(&lista.at(i));
+
+			fileC.write((char*)&companero, sizeof(companero));
+		}
 		
-		fileC.write((char*)&amigo, sizeof(amigo));
+		
 	}
 
 	const char* file_nameCas = "./Castigo.maluma";
 
 	ofstream fileCas(file_nameA, ios::out|ios::binary);
 
-	castigos castigo;
+	castigos* castigo;
 
 	for (int i = 0; i < lista.size(); ++i)
 	{
+		if ((dynamic_cast<castigos*>(&lista.at(i))) != NULL)
+		{
+			castigo = dynamic_cast<castigos*>(&lista.at(i));
+
+			fileC.write((char*)&castigo, sizeof(castigo));
+		}
 		
-		fileCas.write((char*)&amigo, sizeof(amigo));
+		
 	}
-}
