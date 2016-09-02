@@ -11,4 +11,4 @@ class castigos:public contactos{
 		castigos(string,string,int,string);
 		virtual ~castigos();
 		virtual string toString()const;
-}
+};

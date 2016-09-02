@@ -11,4 +11,4 @@ class amigos:public contactos{
 		amigos(string,string,int,string);
 		virtual ~amigos();
 		virtual string toString()const;
-}
+};

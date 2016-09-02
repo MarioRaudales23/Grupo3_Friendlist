@@ -11,4 +11,4 @@ class companeros:public contactos{
 		companeros(string,string,string,string);
 		virtual ~companeros();
 		virtual string toString()const;
-}
+};

@@ -11,4 +11,4 @@ class familiares:public contactos{
 		familiares(string,string,string,string);
 		virtual ~familiares();
 		virtual string toString()const;
-}
+};
