@@ -11,12 +11,12 @@ using std::vector;
 
 using namespace std;
 
-void Cargar(vector<contactos>);
+void Cargar(vector<contactos*>);
 
 
 int main(int argc, char const *argv[])
 {
-	vector<contactos> lista;
+	vector<contactos*> lista;
 	Cargar(lista);
 	int op=0;
 	while(op!=3){
@@ -38,11 +38,14 @@ int main(int argc, char const *argv[])
 					case 1:{
 						int tiempo_ami;
 						string username;
-						cout<<"Cantidad de años que se conocen: ";
-						cin>>tiempo_ami;
+						do
+						{
+							cout<<"Cantidad de años que se conocen: ";
+							cin>>tiempo_ami;
+						} while (tiempo_ami<=0);
 						cout<<"Nombre de usuario: ";
 						cin>>username;
-						lista.push_back(amigos(nombre,numero,tiempo_ami,username));
+						lista.push_back(new amigos(nombre,numero,tiempo_ami,username));
 						break;
 					}
 					case 2:{
@@ -51,7 +54,7 @@ int main(int argc, char const *argv[])
 						cin>>consanguinidad;
 						cout<<"Grado de parentesco: ";
 						cin>>parentesco;
-						lista.push_back(familiares(nombre,numero,consanguinidad,parentesco));
+						lista.push_back(new familiares(nombre,numero,consanguinidad,parentesco));
 						break;
 					}
 					case 3:{
@@ -60,39 +63,61 @@ int main(int argc, char const *argv[])
 						cin>>clase;
 						cout<<"Trabajaria en grupo con esta persona: ";
 						cin>>grupo;
-						lista.push_back(companeros(nombre,numero,clase,grupo));
+						lista.push_back(new companeros(nombre,numero,clase,grupo));
 						break;
 					}
 					case 4:{
 						int puntos;
 						string tecnica;
-						cout<<"Puntucacion: ";
-						cin>>puntos;
+						do
+						{
+							cout<<"Puntucacion (1-5): ";
+							cin>>puntos;
+						} while (puntos<1||puntos>5);
 						cout<<"Tecnica utilizada: ";
 						cin>>tecnica;
-						lista.push_back(castigos(nombre,numero,puntos,tecnica));
+						lista.push_back(new castigos(nombre,numero,puntos,tecnica));
 						break;
 					}
 				}
 				cout<<"*******"<<endl<<"Agregado"<<endl<<"*******"<<endl;
-
-
 				break;
+				
 			}
 			case 2:{
 				cout<<"------Listar------"<<endl;
+				cout<<lista.size()<<endl;
 				for (int i = 0; i < lista.size(); i++)
 				{
-					
+					cout << "direccion lista[i]: " << lista[i] << endl;
+					contactos* temp = (lista[i]);
+					cout << "direccion temp: " << temp << endl;
+					if (dynamic_cast<amigos*>(lista[i])!=NULL){
+						amigos* ami=dynamic_cast<amigos*>(temp);
+						cout<<"Entro";
+						cout<<ami->toString()<<endl;
+					}
+					if (dynamic_cast<familiares*>(temp)!=NULL){
+						familiares *fami=dynamic_cast<familiares*>(temp);
+						cout<<fami->toString()<<endl;
+					}
+					if (dynamic_cast<companeros*>(temp)!=NULL){
+						companeros *compa=dynamic_cast<companeros*>(temp);
+						cout<<compa->toString()<<endl;
+					}
+					if (dynamic_cast<castigos*>(temp)!=NULL){
+						castigos *casti=dynamic_cast<castigos*>(temp);
+						cout<<casti->toString()<<endl;
+					}
 				}
-				
+				break;
 			}
 		}
 	}
 	return 0;
 }
 
-void Cargar(vector<contactos> lista)
+void Cargar(vector<contactos*> lista)
 {
 	const char* file_nameA = "./Amigos.maluma";
 
